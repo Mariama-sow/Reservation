@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>ROYAL HOTEL | Responsive Travel & Tourism Template</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicons -->
+        <link href="img/favicon.ico" rel="icon">
+        <link href="img/apple-favicon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
+
+        <!-- Vendor CSS File -->
+        <link href="{% static 'profils/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'profils/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'profils/animate.min.css' %}" rel="stylesheet">
+        <link href="{% static 'profils/slick.css' %}" rel="stylesheet">
+        <link href="{% static 'profils/slick-theme.css' %}" rel="stylesheet">
+        <link href="{% static 'profils/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+        <!-- Main Stylesheet File -->
+        <link href="{% static 'profils/hover-style.css' %}" rel="stylesheet">
+        <link href="{% static 'profils/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Header Section Start -->
+        <header id="header">
+            <a href="index.html" class="logo"><img src="img/logo.jpg" alt="logo"></a>
+            <div class="phone"><i class="fa fa-phone"></i>+224 611 14 18 47 </div>
+            <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
+            <nav class="main-menu top-menu">
+                <ul>
+                    <li class="active"><a href="{% url 'home' %}">Acceuil</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'service' %}">Services</a></li>
+                        <li><a href="{% url 'amenitie' %}">Equipements</a></li>
+                        <li>
+                            <form method="POST" action="{% url 'users:logout' %}" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">Deconnexion</button>
+                            </form>
+                        </li>
+                        
+                    {% else %}
+                        <li><a href="{% url 'users:login' %}">Connexion</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Header Section End -->
+
+        {% block content %} {% endblock %}
+
+
+
+
+                
+        <!-- Footer Section Start -->
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="social">
+                            <a href=""><li class="fa fa-instagram"></li></a>
+                            <a href=""><li class="fa fa-twitter"></li></a>
+                            <a href=""><li class="fa fa-facebook-f"></li></a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <p>Copyright &#169; 2045 <a href="">Your Site Name</a> All Rights Reserved.</p>
+						
+						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+						<p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Section End -->
+        
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        
+        <!-- Vendor JavaScript File -->
+        <script src="{% static 'profils/jquery.min.js' %}"></script>
+        <script src="{% static 'profils/jquery-migrate.min.js' %}"></script>
+        <script src="{% static 'profils/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'profils/easing.min.js' %}"></script>
+        <script src="{% static 'profils/sticky.js' %}"></script>
+        <script src="{% static 'profils/hoverIntent.js' %}"></script>
+        <script src="{% static 'profils/superfish.min.js' %}"></script>
+        <script src="{% static 'profils/wow.min.js' %}"></script>
+        <script src="{% static 'profils/slick.min.js' %}"></script>
+        <script src="{% static 'profils/moment.min.js' %}"></script>
+        <script src="{% static 'profils/moment-timezone.min.js' %}"></script>
+        <script src="{% static 'profils/tempusdominus-bootstrap-4.min.js' %}"></script>
+        
+        <!-- Booking Javascript File -->
+        <script src="{% static 'profils/booking.js' %}"></script>
+        <script src="{% static 'profils/jqBootstrapValidation.min.js' %}"></script>
+  
+        <!-- Main Javascript File -->
+        <script src="{% static 'profils/main.js' %}"></script>
+    </body>
+</html>

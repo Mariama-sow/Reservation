@@ -1,0 +1,39 @@
+{% extends "profils/layout.html" %}
+
+{% block content %}
+
+
+<!-- Amenities Section Start -->
+<div id="amenities">
+    <div class="container">
+        <div class="section-header">
+            <h2>Amenities & Services</h2>
+            <p>
+                Découvrez nos équipements disponibles pour améliorer votre expérience de travail.
+            </p>
+        </div>
+        <div class="row">
+            <!-- Boucle sur les équipements -->
+            {% for amenity in amenities %}
+                <div class="col-md-3 col-sm-6 icons">
+                    <!-- Afficher l'image de l'équipement -->
+                    <img src="{% if amenity.image %}{{ amenity.image.url }}{% endif %}" class="img-fluid" alt="{{ amenity.name }}">
+
+                    <!-- Afficher le nom de l'équipement -->
+                    <h3>{{ amenity.name }}</h3>
+
+                    <!-- Afficher la description de l'équipement -->
+                    <p>{{ amenity.description }}</p>
+
+                    <!-- Afficher les services associés à cet équipement -->
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Amenities Section End -->
+
+
+
+
+{% endblock %}

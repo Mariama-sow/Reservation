@@ -1,0 +1,44 @@
+{% extends "profils/layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <!-- Formulaire de connexion -->
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="alert alert-success">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="col-md-6 mt-5 mb-5">
+        <div class="login-form">
+            <form method="POST" action="{% url 'users:login' %}">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="control-group col-sm-12">
+                        <label for="username">Nom d’utilisateur</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="control-group col-sm-12 mt-3">
+                        <label for="password">Mot de passe</label>
+                        {{ form.password }}
+                    </div>
+                </div>
+
+
+                <div>
+                    <hr>
+                    </hr>
+                    <div class="d-flex justify-content-center">
+                        <input type="submit" value="Connexion" class="btn btn-info">
+                    </div> 
+                    <p class="mt-4 text-sm text-center">
+                        Vous n'avez pas de compte ? 
+                        <a href="{% url 'users:creation' %}" class="text-primary text-gradient font-weight-bold">Créer un compte</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div> 
+</div>
+{% endblock %}

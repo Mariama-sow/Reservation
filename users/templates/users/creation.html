@@ -1,0 +1,65 @@
+{% extends "profils/layout.html" %}
+
+{% block content %}
+           
+
+    <div id="login">
+        <div class="container">
+            <div class="section-header">
+                <h2>Registration</h2>
+                <p>
+                    Créez votre compte pour accéder à nos services.
+                </p>
+            </div>
+            
+             <div class="d-flex justify-content-center">
+                <!-- Formulaire d'inscription -->
+                <div class="col-md-6">
+                    <div class="login-form">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <!-- Nom et prénom -->
+                                <div class="control-group col-sm-6">
+                                    <label for="first_name">Prénom</label>
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="control-group col-sm-6">
+                                    <label for="last_name">Nom</label>
+                                    {{ form.last_name }}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <!-- Nom d'utilisateur et email -->
+                                <div class="control-group col-sm-6">
+                                    <label for="username">Nom d’utilisateur</label>
+                                    {{ form.username }}
+                                </div>
+                                <div class="control-group col-sm-6">
+                                    <label for="email">Email</label>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <!-- Mot de passe et confirmation -->
+                                <div class="control-group col-sm-6">
+                                    <label for="password">Mot de passe</label>
+                                    {{ form.password }}
+                                </div>
+                                <div class="control-group col-sm-6">
+                                    <label for="password_confirm">Confirmez votre mot de passe</label>
+                                    {{ form.password_confirm }}
+                                </div>
+                            </div>
+                            <!-- Bouton d'envoi -->
+                            <div class="button">
+                                <button type="submit">Inscription</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "profils/layout.html" %}
+
+{% block content %}
+   <!-- Contact Section Start -->
+<div id="contact">
+    <div class="container">
+        <div class="section-header">
+            <h2>Contact</h2>
+            <p>
+                Nous sommes à votre écoute ! N'hésitez pas à nous contacter pour toute question, demande d'information ou besoin d'assistance. Notre équipe se fera un plaisir de vous répondre dans les plus brefs délais
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row contact-info">
+                    <div class="col-md-4">
+                        <div class="info-item">
+                            <p><i class="fa fa-map-marker"></i>22 Wolf Road, California</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-item">
+                            <p><i class="fa fa-envelope"></i> <a href="mailto:info@example.com">1000tech@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-item">
+                            <p><i class="fa fa-phone"></i><a href="tel:+1 234 567 8900">+224 611 14 18 47</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="contact-form">
+                   
+                    <!-- Formulaire Django -->
+                    <form method="POST" novalidate="novalidate">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <!-- Nom -->
+                            <div class="control-group col-sm-6">
+                                <label>Your Name</label>
+                                {{ form.your_name }}
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="control-group col-sm-6">
+                                <label>Email</label>
+                                {{ form.email }}
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+                        <!-- Sujet -->
+                        <div class="control-group">
+                            <label>Subject</label>
+                            {{ form.subject }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="control-group">
+                            <label>Message</label>
+                            {{ form.message }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <!-- Bouton d'envoi -->
+                        <div class="button">
+                            <button type="submit" id="sendMessageButton">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Section End -->
+
+
+       
+{% endblock %}

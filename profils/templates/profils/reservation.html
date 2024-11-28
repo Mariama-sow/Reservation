@@ -1,0 +1,78 @@
+{% extends "profils/layout.html" %}
+
+{% block content %}
+    <!-- Booking Section Start -->
+    <div id="booking">
+        <div class="container">
+            <div class="section-header">
+                <h2> Espace de reservation</h2>
+                <p>
+                    Réservez votre espace dès maintenant ! Nous vous garantissons un service de qualité pour un séjour inoubliable.
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="booking-form">
+                        <div id="success"></div>
+
+                        <!-- Affichage des messages de succès -->
+                        {% if messages %}
+                        <div class="alert alert-success">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                {{ form.errors }}
+                            </div>
+                        {% endif %}
+
+                        <!-- Formulaire Django pour la réservation -->
+                        <form method="POST" novalidate="novalidate">
+                            {% csrf_token %}
+                            
+                            <div class="form-row">
+                                <!-- Date de début de réservation (Check-in) -->
+                                <div class="control-group col-sm-6">
+                                    <label for="check_in">Date d'arrivée (Check-in)</label>
+                                    {{ form.check_in }}
+                                    <p class="help-block text-danger"></p>
+                                </div>
+
+                                <!-- Date de fin de réservation (Check-out) -->
+                                <div class="control-group col-sm-6">
+                                    <label for="check_out">Date de départ (Check-out)</label>
+                                    {{ form.check_out }}
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+
+                            <!-- Demande spéciale -->
+                            <div class="control-group">
+                                <label for="special_request">Demande spéciale</label>
+                                {{ form.special_request }}
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                            <!-- Sélection du service -->
+                            <!-- <div class="control-group">
+                                <label for="service">Service</label>
+                                {{ form.service }}
+                                <p class="help-block text-danger"></p>
+                            </div> -->
+
+                            <!-- Bouton de soumission -->
+                            <div class="button">
+                                <button type="submit" id="sendMessageButton" class="btn btn-primary">Book now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking Section End -->
+{% endblock %}

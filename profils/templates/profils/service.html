@@ -1,0 +1,50 @@
+{% extends "profils/layout.html" %}
+
+{% block content %}
+   <!-- About Section Start -->
+   <div id="about">
+    <div class="container">
+        <div class="section-header">
+            <h2>Nos Services</h2>
+            <p>
+                Découvrez nos services sur mesure, conçus pour répondre à tous vos besoins professionnels. Que ce soit pour des réunions, des conférences ou des sessions de travail, nous mettons à votre disposition des équipements de qualité dans un environnement moderne et confortable.
+            </p>
+        </div>
+
+        {% for service in services %}
+        <div class="row">
+            <div class="col-md-6 img-cols">
+                <div class="img-col">
+                    <!--div class="card-img-top-wrapper" style="height: 180px; overflow: hidden;"-->
+                        <img src="{% if service.image %}{{ service.image.url }}{% endif %}" class="card-img-top" style="object-fit: image; width: 100%; height: 100%;" alt="{{ image.name }}">
+                   
+                </div>
+            </div>
+            <div class="col-md-6 content-cols">
+                <div class="content-col">
+                    <h3>{{service.name}}</h3>
+                    <p>
+                       {{service.description}}
+                    </p>
+                    <p>
+                        {{service.price}}
+                    </p>
+                    <a href="{% url 'reservation' service.id %}">Book now</a>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        {% endfor %}
+        
+        
+        
+        
+        
+    </div>
+</div>
+<!-- About Section End -->
+
+       
+{% endblock %}
